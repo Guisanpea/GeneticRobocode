@@ -9,5 +9,5 @@ public interface GeneticRobot {
 
     void printGenes(String filename, Genes genes);
 
-    double applyFitnessFunction(double lifeLeft, int victories, double timeSpent);
+    Genes applyFitnessFunction(double lifeLeft, int victories, double timeSpent);
 }
