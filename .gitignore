@@ -78,3 +78,7 @@ hs_err_pid*
 
 #Floobits
 .floo*
+/bin/
+
+.project
+.classpath
