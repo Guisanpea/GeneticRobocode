@@ -6,7 +6,9 @@ import java.io.PrintWriter;
 import org.jgap.FitnessFunction;
 import org.jgap.IChromosome;
 
-import robocode.control.RobocodeEngine;
+import robocode.control.*;
+import robocode.control.events.BattleAdaptor;
+import robocode.control.events.BattleCompletedEvent;
 
 public class MyFitnessFunction extends FitnessFunction {
 
@@ -25,9 +27,7 @@ public class MyFitnessFunction extends FitnessFunction {
 			String path = "path";
 			pw = new PrintWriter(path);
 			for (int i = 0; i < chromo.size(); ++i) {
-
 				pw.write(chromo.getGene(i).getAllele().toString() + "");
-
 			}
 
 			fitness = battle(chromo);
@@ -43,7 +43,7 @@ public class MyFitnessFunction extends FitnessFunction {
 	}
 
 	protected double battle(IChromosome chromo) throws FileNotFoundException {
-		
+
 		RobocodeEngine engine = new RobocodeEngine(new java.io.File("C:/robocode"));
 
 		engine.setVisible(true);
@@ -59,31 +59,35 @@ public class MyFitnessFunction extends FitnessFunction {
 		boolean hideEnemyNames = false;
 
 		RobotSpecification[] modelRobots = engine.getLocalRepository("atl.SuperTracker*,atl.SuperRamFire*");
-		RobotSetup[] robotSetups= new RobotSetup[2];robotSetups[0]=new RobotSetup(0.0,0.0,0.0);robotSetups[1]=new RobotSetup(600.0,500.0,0.0);
+		RobotSetup[] robotSetups = new RobotSetup[2];
+		robotSetups[0] = new RobotSetup(0.0, 0.0, 0.0);
+		robotSetups[1] = new RobotSetup(600.0, 500.0, 0.0);
 
 		/* Create and run the battle */
 		BattleSpecification battleSpec = new BattleSpecification(battlefield, numberOfRounds, inactivityTime,
 				gunCoolingRate, sentryBorderSize, hideEnemyNames, modelRobots,
-				robotSetups);engine.addBattleListener(new BattleObserver());
+				robotSetups);
+		engine.addBattleListener(new BattleObserver());
 		// Run our specified battle and let it run till it is over
-		engine.runBattle(battleSpec,true); // waits till the battle finishes
+		engine.runBattle(battleSpec, true); // waits till the battle finishes
 		// Cleanup our RobocodeEngine
 		engine.close();
-		
+
 		double finalScore = BattleObserver.score;
-		
+
 		return finalScore;
 
 	}
-	
-	class BattleObserver extends BattleAdaptor {
-		
-		public double score;
-		
-		public void onBattleCompleted (BattleCompletedEvent e) {
-			
+
+	static class BattleObserver extends BattleAdaptor {
+
+		public static double score;
+
+		public void onBattleCompleted(BattleCompletedEvent e) {
+
 			score = e.getIndexedResults()[0].getScore();
-			
+
 		}
-		
+
 	}
+}

@@ -41,6 +41,20 @@ public class GeneticSuperTracker extends AdvancedRobot implements GeneticRobot {
         }
     }
 
+    private void changeSpeedRandomly() {
+        if (Math.random() < currentGenes.changeSpeedProbability) {
+            changeSpeed();
+        }
+    }
+
+    private void changeSpeed() {
+        int randomInRange = velocityRandom.nextInt(currentGenes.rangeOfSpeeds);
+        double speedPartition = Rules.MAX_VELOCITY / currentGenes.rangeOfSpeeds;
+
+        double nextSpeed = randomInRange * speedPartition + currentGenes.minimumSpeed;
+        setMaxVelocity(nextSpeed);//randomly change speed
+    }
+
     private void closeFire(ScannedRobotEvent e, double absBearing, double latVel) {
         double gunAngleToNormalize = absBearing - getGunHeadingRadians() + latVel / 15;
         double gunTurnAngle = Utils.normalRelativeAngle(gunAngleToNormalize);//amount to turn our gun, lead just a little bit
@@ -63,19 +77,6 @@ public class GeneticSuperTracker extends AdvancedRobot implements GeneticRobot {
         setFire(3);//fire
     }
 
-    private void changeSpeedRandomly() {
-        if (Math.random() < currentGenes.changeSpeedProbability) {
-            changeSpeed();
-        }
-    }
-
-    private void changeSpeed() {
-        int randomInRange = velocityRandom.nextInt(currentGenes.rangeOfSpeeds);
-        double speedPartition = Rules.MAX_VELOCITY / currentGenes.rangeOfSpeeds;
-
-        double nextSpeed = randomInRange * speedPartition + currentGenes.minimumSpeed;
-        setMaxVelocity(nextSpeed);//randomly change speed
-    }
 
     public void onHitWall(HitWallEvent e){
 		moveDirection=-moveDirection;//reverse direction upon hitting a wall
@@ -91,6 +92,10 @@ public class GeneticSuperTracker extends AdvancedRobot implements GeneticRobot {
 		}
 	}
 
+    @Override
+    public void onDeath(DeathEvent event) {
+        printGenes("genes.txt", currentGenes);
+    }
 
     @Override
     public Genes getCurrentGenes(String filename) {
