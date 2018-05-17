@@ -40,26 +40,26 @@ public class Genes{
 		}
 	}
 	
-	public Gene getJengibreDistance() {
+	public double getJengibreDistance() {
 		
-		return jengibre[0];
+		return Double.parseDouble(jengibre[0].getAllele().toString());
 	}
 	
-	public Gene getJengibreSpeedProbability() {
+	public double getJengibreSpeedProbability() {
 
-		return jengibre[1];
+		return Double.parseDouble(jengibre[1].getAllele().toString());
 	}
 
-	public Gene getJengibreSpeedRange() {
+	public double getJengibreSpeedRange() {
 
-		return jengibre[2];
+		return Double.parseDouble(jengibre[2].getAllele().toString());
 	}
 
-	public Gene getJengibreLento() {
+	public double getJengibreLento() {
 
-		return jengibre[3];
+		return Double.parseDouble(jengibre[3].getAllele().toString());
 	}
-
+	
 	public Chromosome getCromogibre() {
 		return this.cromogibre;
 	}
