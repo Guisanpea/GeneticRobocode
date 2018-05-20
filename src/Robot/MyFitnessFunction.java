@@ -31,6 +31,7 @@ public class MyFitnessFunction extends FitnessFunction {
 				pw.write(chromo.getGene(i).getAllele().toString() + "");
 				
 			}
+			pw.close();
 
 			fitness = battle(chromo);
 			
