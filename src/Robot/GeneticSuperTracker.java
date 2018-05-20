@@ -34,7 +34,7 @@ public class GeneticSuperTracker extends AdvancedRobot implements GeneticRobot {
 
         changeSpeedRandomly();
 
-        if (e.getDistance() > currentGenes.distanceToBeClose) {//if distance is greater than 150
+        if (e.getDistance() > currentGenes.getJengibreDistance()) {//if distance is greater than 150
             distanceFire(e, absBearing, latVel);
         } else {//if we are close enough...
             closeFire(e, absBearing, latVel);
@@ -42,16 +42,16 @@ public class GeneticSuperTracker extends AdvancedRobot implements GeneticRobot {
     }
 
     private void changeSpeedRandomly() {
-        if (Math.random() < currentGenes.changeSpeedProbability) {
+        if (Math.random() < currentGenes.getJengibreSpeedProbability()) {
             changeSpeed();
         }
     }
 
     private void changeSpeed() {
-        int randomInRange = velocityRandom.nextInt(currentGenes.rangeOfSpeeds);
-        double speedPartition = Rules.MAX_VELOCITY / currentGenes.rangeOfSpeeds;
+        int randomInRange = velocityRandom.nextInt(currentGenes.getJengibreSpeedRange());
+        double speedPartition = Rules.MAX_VELOCITY / currentGenes.getJengibreSpeedRange();
 
-        double nextSpeed = randomInRange * speedPartition + currentGenes.minimumSpeed;
+        double nextSpeed = randomInRange * speedPartition + currentGenes.getJengibreLento();
         setMaxVelocity(nextSpeed);//randomly change speed
     }
 

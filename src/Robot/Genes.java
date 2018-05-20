@@ -50,9 +50,9 @@ public class Genes{
 		return Double.parseDouble(jengibre[1].getAllele().toString());
 	}
 
-	public double getJengibreSpeedRange() {
+	public int getJengibreSpeedRange() {
 
-		return Double.parseDouble(jengibre[2].getAllele().toString());
+		return Integer.parseInt(jengibre[2].getAllele().toString());
 	}
 
 	public double getJengibreLento() {
