@@ -23,14 +23,18 @@ public class MyFitnessFunction extends FitnessFunction {
 		PrintWriter pw;
 
 		try {
-
+			
 			String path = "path";
 			pw = new PrintWriter(path);
 			for (int i = 0; i < chromo.size(); ++i) {
+				System.out.println("Iteration " + i);
 				pw.write(chromo.getGene(i).getAllele().toString() + "");
+				
 			}
 
 			fitness = battle(chromo);
+			
+			System.out.println("\nThe fitness value is: " + fitness);
 
 		} catch (FileNotFoundException e) {
 
