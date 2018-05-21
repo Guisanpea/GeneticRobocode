@@ -42,22 +42,22 @@ public class Genes{
 	
 	public Gene getJengibreDistance() {
 		
-		return jengibre[0];
+		return (Gene) jengibre[0].getAllele();
 	}
 	
 	public Gene getJengibreSpeedProbability() {
 
-		return jengibre[1];
+		return (Gene) jengibre[1].getAllele();
 	}
 
 	public Gene getJengibreSpeedRange() {
 
-		return jengibre[2];
+		return (Gene) jengibre[2].getAllele();
 	}
 
 	public Gene getJengibreLento() {
 
-		return jengibre[3];
+		return (Gene) jengibre[3].getAllele();
 	}
 
 	public Chromosome getCromogibre() {
