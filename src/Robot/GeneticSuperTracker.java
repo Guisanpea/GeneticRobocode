@@ -34,11 +34,25 @@ public class GeneticSuperTracker extends AdvancedRobot implements GeneticRobot {
 
         changeSpeedRandomly();
 
-        if (e.getDistance() > currentGenes.distanceToBeClose) {//if distance is greater than 150
+        if (e.getDistance() > currentGenes.getJengibreDistance()) {//if distance is greater than 150
             distanceFire(e, absBearing, latVel);
         } else {//if we are close enough...
             closeFire(e, absBearing, latVel);
         }
+    }
+
+    private void changeSpeedRandomly() {
+        if (Math.random() < currentGenes.getJengibreSpeedProbability()) {
+            changeSpeed();
+        }
+    }
+
+    private void changeSpeed() {
+        int randomInRange = velocityRandom.nextInt(currentGenes.getJengibreSpeedRange());
+        double speedPartition = Rules.MAX_VELOCITY / currentGenes.getJengibreSpeedRange();
+
+        double nextSpeed = randomInRange * speedPartition + currentGenes.getJengibreLento();
+        setMaxVelocity(nextSpeed);//randomly change speed
     }
 
     private void closeFire(ScannedRobotEvent e, double absBearing, double latVel) {
@@ -63,19 +77,6 @@ public class GeneticSuperTracker extends AdvancedRobot implements GeneticRobot {
         setFire(3);//fire
     }
 
-    private void changeSpeedRandomly() {
-        if (Math.random() < currentGenes.changeSpeedProbability) {
-            changeSpeed();
-        }
-    }
-
-    private void changeSpeed() {
-        int randomInRange = velocityRandom.nextInt(currentGenes.rangeOfSpeeds);
-        double speedPartition = Rules.MAX_VELOCITY / currentGenes.rangeOfSpeeds;
-
-        double nextSpeed = randomInRange * speedPartition + currentGenes.minimumSpeed;
-        setMaxVelocity(nextSpeed);//randomly change speed
-    }
 
     public void onHitWall(HitWallEvent e){
 		moveDirection=-moveDirection;//reverse direction upon hitting a wall
@@ -91,6 +92,10 @@ public class GeneticSuperTracker extends AdvancedRobot implements GeneticRobot {
 		}
 	}
 
+    @Override
+    public void onDeath(DeathEvent event) {
+        printGenes("genes.txt", currentGenes);
+    }
 
     @Override
     public Genes getCurrentGenes(String filename) {
