@@ -13,7 +13,7 @@ public class Genes{
 
 	private Configuration conf = new DefaultConfiguration();
 	protected Gene[] jengibre = new Gene[4];
-	private Chromosome cromogibre;
+	protected Chromosome cromogibre;
 	private static final int POP_SIZE = 1;
 	private static final int EVOLVING_LAPSE = 120;
 
