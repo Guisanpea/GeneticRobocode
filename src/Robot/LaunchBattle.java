@@ -20,11 +20,7 @@ public class LaunchBattle {
     	FitnessFunction myFunc = new MyFitnessFunction();
     	config.setFitnessFunction(myFunc);
     	
-    	Gene[] myGenes = new Gene[4];
-    	myGenes[0] = new DoubleGene(config, 0, 905);
-    	myGenes[1] = new DoubleGene(config, 0, 1);
-    	myGenes[2] = new DoubleGene(config, 0, 8);
-    	myGenes[3] = new DoubleGene(config, 0, 8);
+    	Gene[] myGenes = new Genes().jengibre;
     	
     	Chromosome ourChromosome = new Chromosome(config, myGenes);
     	config.setSampleChromosome(ourChromosome);
