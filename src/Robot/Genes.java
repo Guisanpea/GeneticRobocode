@@ -12,7 +12,7 @@ import org.jgap.impl.IntegerGene;
 public class Genes{
 
 	private Configuration conf = new DefaultConfiguration();
-	private Gene[] jengibre = new Gene[4];
+	protected Gene[] jengibre = new Gene[4];
 	private Chromosome cromogibre;
 	private static final int POP_SIZE = 1;
 	private static final int EVOLVING_LAPSE = 120;
