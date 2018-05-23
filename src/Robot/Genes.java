@@ -17,16 +17,16 @@ public class Genes{
 	private static final int POP_SIZE = 1;
 	private static final int EVOLVING_LAPSE = 120;
 
-	public void distanceToBeClose(Integer lowerBound, Integer upperBound) throws InvalidConfigurationException{
-		jengibre[0] = new IntegerGene(conf, lowerBound, upperBound); //double the default close distance
+	public void distanceToBeClose(double lowerBound, double upperBound) throws InvalidConfigurationException{
+		jengibre[0] = new DoubleGene(conf, lowerBound, upperBound); //double the default close distance
 	}
 
 	public void changeSpeedProbability(double lowerBound, double upperBound) throws InvalidConfigurationException{
 		jengibre[1] = new DoubleGene(conf, lowerBound, upperBound); //10% chance
 	}
 
-	public void rangeOfSpeeds(double lowerBound, double upperBound) throws InvalidConfigurationException {
-		jengibre[2] = new DoubleGene(conf, lowerBound, upperBound); //triple the default
+	public void rangeOfSpeeds(Integer lowerBound, Integer upperBound) throws InvalidConfigurationException {
+		jengibre[2] = new IntegerGene(conf, lowerBound, upperBound); //triple the default
 	}
 
 	public void minimumSpeed(double lowerBound, double upperBound) throws InvalidConfigurationException {
