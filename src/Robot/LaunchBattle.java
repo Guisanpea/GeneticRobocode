@@ -22,7 +22,7 @@ public class LaunchBattle {
     	
     	Gene[] myGenes = new Genes().jengibre;
     	
-    	Chromosome ourChromosome = new Chromosome(config, myGenes);
+    	Chromosome ourChromosome = new Genes().cromogibre(config, myGenes);
     	config.setSampleChromosome(ourChromosome);
     	
     	config.setPopulationSize(12);
