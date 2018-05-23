@@ -54,9 +54,9 @@ public class Genes{
 		}
 	}
 
-	public Integer getJengibreDistance() {
+	public double getJengibreDistance() {
 
-		return (Integer) jengibre[0].getAllele();
+		return (Double) jengibre[0].getAllele();
 	}
 
 	public double getJengibreSpeedProbability() {
@@ -64,7 +64,7 @@ public class Genes{
 		return (Double) jengibre[1].getAllele();
 	}
 
-	public double getJengibreSpeedRange() {
+	public Integer getJengibreSpeedRange() {
 
 		return (Double) jengibre[2].getAllele();
 	}
