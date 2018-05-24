@@ -21,25 +21,12 @@ public class LaunchBattle {
     	config.setFitnessFunction(myFunc);
     	
     	Genes myGenes = new Genes();
-    	myGenes.crearCromosoma();
+    	myGenes.crearGenotipo();
     	
     	myGenes.distanceToBeClose(0, 905);
     	myGenes.changeSpeedProbability(0, 1);
     	myGenes.rangeOfSpeeds(0, 8);
     	myGenes.minimumSpeed(0, 8);
-    	
-    	config.setSampleChromosome(myGenes.cromogibre);
-    	
-    	config.setPopulationSize(12);
-    	
-    	myGenes.crearGenotipo();
-    	
-    	for (int i = 0; i < MAX_EVOLUTIONS; i++) {
-    		System.out.println(i + ";");
-    		System.out.println(Population.toString());
-    		Population.evolve();
-    		System.out.println(Population.getFittestChromosome().toString());
-    	}
     	
 	}
 	

@@ -44,8 +44,10 @@ public class Genes{
 			Genotype popRobot = Genotype.randomInitialGenotype(conf);
 			
 			for(int i=0; i<EVOLVING_LAPSE; i++) {
-				
+				System.out.println(i + ";");
+	    		System.out.println(popRobot.toString());
 				popRobot.evolve();
+				System.out.println(popRobot.getFittestChromosome().toString());
 			}
 
 		}catch(InvalidConfigurationException e) {
@@ -66,7 +68,7 @@ public class Genes{
 
 	public Integer getJengibreSpeedRange() {
 
-		return (Double) jengibre[2].getAllele();
+		return (Integer) jengibre[2].getAllele();
 	}
 
 	public double getJengibreLento() {
