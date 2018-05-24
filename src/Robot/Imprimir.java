@@ -13,7 +13,7 @@ public class Imprimir {
 		
 		Genes genio = new Genes();
 		Scanner sc = new Scanner(new File(filename));
-		
+
 		Scanner sc2 = new Scanner(sc.nextLine());
 		genio.distanceToBeClose(sc2.nextDouble(), sc2.nextDouble());
 		
