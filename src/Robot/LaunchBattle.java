@@ -1,11 +1,6 @@
 package Robot;
 
-import org.jgap.Chromosome;
-import org.jgap.Configuration;
-import org.jgap.FitnessFunction;
-import org.jgap.Gene;
-import org.jgap.Genotype;
-import org.jgap.InvalidConfigurationException;
+import org.jgap.*;
 import org.jgap.impl.DefaultConfiguration;
 import org.jgap.impl.DoubleGene;
 

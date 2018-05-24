@@ -66,7 +66,7 @@ public class Genes{
 
 	public Integer getJengibreSpeedRange() {
 
-		return (Double) jengibre[2].getAllele();
+		return (Integer) jengibre[2].getAllele();
 	}
 
 	public double getJengibreLento() {

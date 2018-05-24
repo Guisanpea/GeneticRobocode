@@ -93,22 +93,7 @@ public class GeneticSuperTracker extends AdvancedRobot implements GeneticRobot {
 	}
 
     @Override
-    public void onDeath(DeathEvent event) {
-        printGenes("genes.txt", currentGenes);
-    }
-
-    @Override
     public Genes getCurrentGenes(String filename) {
-        return null;
-    }
-
-    @Override
-    public void printGenes(String filename, Genes genes) {
-
-    }
-
-    @Override
-    public Genes applyFitnessFunction(double lifeLeft, int victories, double timeSpent) {
         return null;
     }
 }
