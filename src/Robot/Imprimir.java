@@ -38,7 +38,15 @@ public class Imprimir {
 
 	}
 
+	public void printGenes(String filename, Genes genes) throws FileNotFoundException {
+		PrintWriter printGenes = new PrintWriter(new File(filename));
+		printGenes.println(genes.getJengibreDistance());
+		printGenes.println(genes.getJengibreSpeedProbability());
+		printGenes.println( genes.getJengibreSpeedRange());
+		printGenes.println(genes.getJengibreLento());
 
 
+
+	}
 }
 
