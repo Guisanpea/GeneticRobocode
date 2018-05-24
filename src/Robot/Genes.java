@@ -44,8 +44,10 @@ public class Genes{
 			Genotype popRobot = Genotype.randomInitialGenotype(conf);
 			
 			for(int i=0; i<EVOLVING_LAPSE; i++) {
-				
+				System.out.println(i + ";");
+	    		System.out.println(popRobot.toString());
 				popRobot.evolve();
+				System.out.println(popRobot.getFittestChromosome().toString());
 			}
 
 		}catch(InvalidConfigurationException e) {
