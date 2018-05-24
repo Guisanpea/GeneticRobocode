@@ -20,12 +20,18 @@ public class LaunchBattle {
     	FitnessFunction myFunc = new MyFitnessFunction();
     	config.setFitnessFunction(myFunc);
     	
-    	Gene[] myGenes = new Genes().jengibre;
+    	Genes myGenes = new Genes();
+    	myGenes.crearCromosoma();
     	
-    	Chromosome ourChromosome = new Genes().cromogibre(config, myGenes);
-    	config.setSampleChromosome(ourChromosome);
+    	myGenes.distanceToBeClose(0, 905);
+    	myGenes.changeSpeedProbability(0, 1);
+    	myGenes.rangeOfSpeeds(0, 8);
+    	myGenes.minimumSpeed(0, 8);
+    	
+    	config.setSampleChromosome(myGenes.cromogibre);
     	
     	config.setPopulationSize(12);
+    	
     	Genotype Population=Genotype.randomInitialGenotype(config);
     	
     	for (int i = 0; i < MAX_EVOLUTIONS; i++) {
