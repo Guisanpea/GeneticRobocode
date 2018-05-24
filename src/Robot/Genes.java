@@ -1,5 +1,9 @@
 package Robot;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
 import org.jgap.Chromosome;
 import org.jgap.Configuration;
 import org.jgap.Gene;
@@ -33,7 +37,7 @@ public class Genes{
 		jengibre[3] = new DoubleGene(conf, lowerBound, upperBound);//minimum range of speed, still using default
 	}
 
-	public void crearGenotipo() {
+	public void crearGenotipo() throws FileNotFoundException {
 		try {
 
 			cromogibre = new Chromosome(conf, jengibre);
@@ -42,9 +46,10 @@ public class Genes{
 			conf.setPopulationSize(POP_SIZE); //One single robot
 
 			Genotype popRobot = Genotype.randomInitialGenotype(conf);
+			PrintWriter printData = new PrintWriter(new File("genes.txt"));
 			
 			for(int i=0; i<EVOLVING_LAPSE; i++) {
-				illoVoyAEscribirLosGenesXDDDDDDDDDDDDD("genes.txt");
+				printData.println(popRobot.getPopulation().getGenome(true));	
 				System.out.println(i + ";");
 	    		System.out.println(popRobot.toString());
 				popRobot.evolve();
@@ -55,10 +60,6 @@ public class Genes{
 
 			e.getStackTrace();
 		}
-	}
-
-	private void illoVoyAEscribirLosGenesXDDDDDDDDDDDDD(String filename) {
-
 	}
 
 	public double getJengibreDistance() {
