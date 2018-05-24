@@ -32,7 +32,7 @@ public class LaunchBattle {
     	
     	config.setPopulationSize(12);
     	
-    	Genotype Population=Genotype.randomInitialGenotype(config);
+    	myGenes.crearGenotipo();
     	
     	for (int i = 0; i < MAX_EVOLUTIONS; i++) {
     		System.out.println(i + ";");
