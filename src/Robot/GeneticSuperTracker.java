@@ -20,16 +20,23 @@ public class GeneticSuperTracker extends AdvancedRobot implements GeneticRobot {
 
     @Override
     public void run() {
-        currentGenes = getCurrentGenes("genes.txt");
-        velocityRandom = new Random();
-        setAdjustRadarForRobotTurn(true);//keep the radar still while we turn
-        setBodyColor(new Color(128, 128, 50));
-        setGunColor(new Color(50, 50, 20));
-        setRadarColor(new Color(200, 200, 70));
-        setScanColor(Color.white);
-        setBulletColor(Color.blue);
-        setAdjustGunForRobotTurn(true); // Keep the gun still when we turn
-        turnRadarRightRadians(Double.POSITIVE_INFINITY);//keep turning radar right
+        try {
+            currentGenes = getCurrentGenes("genes.txt");
+
+            velocityRandom = new Random();
+            setAdjustRadarForRobotTurn(true);//keep the radar still while we turn
+            setBodyColor(new Color(128, 128, 50));
+            setGunColor(new Color(50, 50, 20));
+            setRadarColor(new Color(200, 200, 70));
+            setScanColor(Color.white);
+            setBulletColor(Color.blue);
+            setAdjustGunForRobotTurn(true); // Keep the gun still when we turn
+            turnRadarRightRadians(Double.POSITIVE_INFINITY);//keep turning radar right
+        } catch (InvalidConfigurationException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public void onScannedRobot(ScannedRobotEvent e) {
@@ -98,9 +105,7 @@ public class GeneticSuperTracker extends AdvancedRobot implements GeneticRobot {
 	}
 
     @Override
-	public
-
-    Genes getCurrentGenes(String filename) throws InvalidConfigurationException, FileNotFoundException {
+	public Genes getCurrentGenes(String filename) throws InvalidConfigurationException, FileNotFoundException {
 
 		Genes genio = new Genes();
 		Scanner sc = new Scanner(new File(filename));

@@ -44,6 +44,7 @@ public class Genes{
 			Genotype popRobot = Genotype.randomInitialGenotype(conf);
 			
 			for(int i=0; i<EVOLVING_LAPSE; i++) {
+				illoVoyAEscribirLosGenesXDDDDDDDDDDDDD("genes.txt");
 				System.out.println(i + ";");
 	    		System.out.println(popRobot.toString());
 				popRobot.evolve();
@@ -54,6 +55,10 @@ public class Genes{
 
 			e.getStackTrace();
 		}
+	}
+
+	private void illoVoyAEscribirLosGenesXDDDDDDDDDDDDD(String filename) {
+
 	}
 
 	public double getJengibreDistance() {

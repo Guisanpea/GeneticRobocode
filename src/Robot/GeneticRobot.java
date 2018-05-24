@@ -13,8 +13,3 @@ public interface GeneticRobot {
 
 	Genes getCurrentGenes(String filename) throws InvalidConfigurationException, FileNotFoundException;
 
-	public void printGenes(String filename, Genes genes);
-
-	Genes applyFitnessFunction(double lifeLeft, int victories, double timeSpent);
-
-}
