@@ -13,3 +13,4 @@ public interface GeneticRobot {
 
 	Genes getCurrentGenes(String filename) throws InvalidConfigurationException, FileNotFoundException;
 
+}

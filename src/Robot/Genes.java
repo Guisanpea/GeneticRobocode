@@ -47,11 +47,11 @@ public class Genes{
 
 			Genotype popRobot = Genotype.randomInitialGenotype(conf);
 			PrintWriter printData = new PrintWriter(new File("genes.txt"));
-			
+
 			for(int i=0; i<EVOLVING_LAPSE; i++) {
 				printData.println(popRobot.getPopulation().getGenome(true));	
 				System.out.println(i + ";");
-	    		System.out.println(popRobot.toString());
+				System.out.println(popRobot.toString());
 				popRobot.evolve();
 				System.out.println(popRobot.getFittestChromosome().toString());
 			}

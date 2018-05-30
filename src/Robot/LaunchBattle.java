@@ -14,12 +14,12 @@ public class LaunchBattle {
       	FitnessFunction myFunc = new MyFitnessFunction();
        	
     	Genes myGenes = new Genes();
-    	myGenes.crearGenotipo();
      	myGenes.conf.setFitnessFunction(myFunc);
     	myGenes.distanceToBeClose(0, 905);
     	myGenes.changeSpeedProbability(0, 1);
     	myGenes.rangeOfSpeeds(0, 8);
     	myGenes.minimumSpeed(0, 8);
+    	myGenes.crearGenotipo();
     	
 	}
 	
