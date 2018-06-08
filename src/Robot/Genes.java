@@ -2,64 +2,69 @@ package Robot;
 
 mport java.io.PrintWriter;
 
-import org.jgap.Chromosome;
-import org.jgap.Gene;
-import org.jgap.Genotype;
-import org.jgap.IChromosome;
-import org.jgap.impl.DefaultConfiguration;
-import org.jgap.impl.DoubleGene;
+import org.jgap.*;
+import org.jgap.impl.*;
 
 import java.io.PrintWriter;
 
-public class Genes{
+public class Genes {
+
+    public static void main(String[] args) throws Exception {
 
 
+        final int EVOLVING_LAPSES = 35;
 
-		final int EVOLVING_LAPSES = 10;
+        Configuration conf = new DefaultConfiguration();
 
-		org.jgap.Configuration conf = new DefaultConfiguration();
-		//Insertar configuraciones fitness function
-		Gene[] jengibre = new Gene[4];
-		jengibre[0] = new DoubleGene(conf,0.0,300.0);
-		jengibre[1] = new DoubleGene(conf,0.0,1.0);
-		jengibre[2] = new DoubleGene(conf,0.0,30.0);
-		jengibre[3] = new DoubleGene(conf,0.0,30.0);
-		Chromosome chromojibre = new Chromosome(conf, jengibre);
+        FitnessFunction myFunc = new MyFitnessFunction("prGeneticRobot.SuperTracker*", "prGeneticRobot.SuperRamFire*");
 
-		conf
+        conf.setFitnessFunction(myFunc);
 
-		Genotype population = Genotype.randomInitialGenotype(conf);
 
-		IChromosome bestChromojibre;
-		//La puntuacion, recogedla
-		PrintWriter pwChromojibre = new PrintWriter("chromosome.txt");
-		for(int i = 0; i < EVOLVING_LAPSES; i++){
-			System.out.println("Generation number " + i);
+        Gene[] jengibre = new Gene[4];
+        jengibre[0] = new DoubleGene(conf, 0.0, 300.0);
+        jengibre[1] = new DoubleGene(conf, 0.0, 1.0);
+        jengibre[2] = new DoubleGene(conf, 0.0, 30.0);
+        jengibre[3] = new DoubleGene(conf, 0.0, 30.0);
+        Chromosome chromojibre = new Chromosome(conf, jengibre);
 
-			population.evolve();
-			bestChromojibre = population.getFittestChromosome();
+        conf.setPopulationSize(10);
 
-			//puntuacion -> bestChromojibre.getFitnessValue(); algo asi para obtener los datos de la funcion fitness
-			System.out.println("Points: " + //puntuacion);
-			pwChromojibre.println(//puntuacion.toString());
+        Genotype jengibiris = Genotype.randomInitialGenotype(conf);
 
-			System.out.println("Close distance: " + bestChromojibre.getGene(0));
-			pwChromojibre.println(bestChromojibre.getGene(0).toString());
+        IChromosome bestChromogibre;
+        Double score;
+        //La puntuacion, recogedla
+        PrintWriter pwChromojibre = new PrintWriter("chromosome.txt");
+        for (int i = 0; i < EVOLVING_LAPSES; i++) {
+            System.out.println("Generation number " + i);
 
-			System.out.println("Change of speed probability: " + bestChromojibre.getGene(1));
-			pwChromojibre.println(bestChromojibre.getGene(1).toString());
+            jengibiris.evolve();
+            bestChromogibre = jengibiris.getFittestChromosome();
 
-			System.out.println("Speeds range: " + bestChromojibre.getGene(2));
-			pwChromojibre.println(bestChromojibre.getGene(2).toString());
 
-			System.out.println("Minimum speed: " +bestChromojibre.getGene(3));
-			pwChromojibre.println(bestChromojibre.getGene(3).toString());
+            System.out.println("Points: " + score);
+            pwChromojibre.println(score.toString());
 
-			System.out.println("-----------------------");
-		}
+            System.out.println("Close distance: " + bestChromogibre.getGene(0));
+            pwChromojibre.println(bestChromogibre.getGene(0).toString());
 
-		pwChromogibre.close();
-	}
+            System.out.println("Change of speed probability: " + bestChromogibre.getGene(1));
+            pwChromojibre.println(bestChromogibre.getGene(1).toString());
+
+            System.out.println("Speeds range: " + bestChromogibre.getGene(2));
+            pwChromojibre.println(bestChromogibre.getGene(2).toString());
+
+            System.out.println("Minimum speed: " + bestChromogibre.getGene(3));
+            pwChromojibre.println(bestChromogibre.getGene(3).toString());
+
+            System.out.println("-----------------------");
+        }
+
+        pwChromojibre.close();
+    }
+
+}
 
 //La clase seria algo asi
 
