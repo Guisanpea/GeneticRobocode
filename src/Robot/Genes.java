@@ -1,20 +1,77 @@
 package Robot;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+mport java.io.PrintWriter;
 
 import org.jgap.Chromosome;
-import org.jgap.Configuration;
 import org.jgap.Gene;
 import org.jgap.Genotype;
-import org.jgap.InvalidConfigurationException;
+import org.jgap.IChromosome;
 import org.jgap.impl.DefaultConfiguration;
-import org.jgap.impl.DoubleGene; //La funcion DoubleGene usa tres parametros: configuracion(que se asigna a traves de una llamada), limite inferior, limite superior;
-import org.jgap.impl.IntegerGene;
+import org.jgap.impl.DoubleGene;
+
+import java.io.PrintWriter;
 
 public class Genes{
 
+
+
+		final int EVOLVING_LAPSES = 10;
+
+		org.jgap.Configuration conf = new DefaultConfiguration();
+		//Insertar configuraciones fitness function
+		Gene[] jengibre = new Gene[4];
+		jengibre[0] = new DoubleGene(conf,0.0,300.0);
+		jengibre[1] = new DoubleGene(conf,0.0,1.0);
+		jengibre[2] = new DoubleGene(conf,0.0,30.0);
+		jengibre[3] = new DoubleGene(conf,0.0,30.0);
+		Chromosome chromojibre = new Chromosome(conf, jengibre);
+
+		conf
+
+		Genotype population = Genotype.randomInitialGenotype(conf);
+
+		IChromosome bestChromojibre;
+		//La puntuacion, recogedla
+		PrintWriter pwChromojibre = new PrintWriter("chromosome.txt");
+		for(int i = 0; i < EVOLVING_LAPSES; i++){
+			System.out.println("Generation number " + i);
+
+			population.evolve();
+			bestChromojibre = population.getFittestChromosome();
+
+			//puntuacion -> bestChromojibre.getFitnessValue(); algo asi para obtener los datos de la funcion fitness
+			System.out.println("Points: " + //puntuacion);
+			pwChromojibre.println(//puntuacion.toString());
+
+			System.out.println("Close distance: " + bestChromojibre.getGene(0));
+			pwChromojibre.println(bestChromojibre.getGene(0).toString());
+
+			System.out.println("Change of speed probability: " + bestChromojibre.getGene(1));
+			pwChromojibre.println(bestChromojibre.getGene(1).toString());
+
+			System.out.println("Speeds range: " + bestChromojibre.getGene(2));
+			pwChromojibre.println(bestChromojibre.getGene(2).toString());
+
+			System.out.println("Minimum speed: " +bestChromojibre.getGene(3));
+			pwChromojibre.println(bestChromojibre.getGene(3).toString());
+
+			System.out.println("-----------------------");
+		}
+
+		pwChromogibre.close();
+	}
+
+//La clase seria algo asi
+
+
+
+
+
+
+
+
+
+	/**
 	protected Configuration conf = new DefaultConfiguration();
 	protected Gene[] jengibre = new Gene[4];
 	protected Chromosome cromogibre;
@@ -49,7 +106,7 @@ public class Genes{
 			PrintWriter printData = new PrintWriter(new File("genes.txt"));
 
 			for(int i=0; i<EVOLVING_LAPSE; i++) {
-				printData.println(popRobot.getPopulation().getGenome(true));	
+				printData.println(popRobot.getPopulation().getGenome(true));
 				System.out.println(i + ";");
 				System.out.println(popRobot.toString());
 				popRobot.evolve();
@@ -88,3 +145,4 @@ public class Genes{
 
 
 }
+**/
